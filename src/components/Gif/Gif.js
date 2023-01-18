@@ -1,12 +1,13 @@
+import { Link } from 'wouter'
 import './Gif.css'
 
-const Gift = ({ id, title, url }) => {
+const Gif = ({ id, title, url }) => {
   return (
-    <a href={`#${id}`} className="gif">
+    <Link to={`/gif/${id}`} className="Gif">
       <h4>{title}</h4>
-      <img src={url} />
-    </a>
+      <img src={url} loading="lazy" />
+    </Link>
   )
 }
 
-export default Gift
+export default Gif

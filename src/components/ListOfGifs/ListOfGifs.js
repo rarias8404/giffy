@@ -1,30 +1,13 @@
-import { useEffect, useState } from 'react'
-import Gift from '../Gif/Gif'
-import { getGifs } from '../../services/gif.service'
+import Git from '../Gif/Gif'
+import './ListOfGifs.css'
 
-const ListOfGifs = ({ params }) => {
-  const { keyword } = params
-  const [gifs, setGifs] = useState([])
-  const [loading, setLoading] = useState(false)
-
-  useEffect(() => {
-    setLoading(true)
-    getGifs({ keyword }).then((gifs) => {
-      setGifs(gifs)
-      setLoading(false)
-    })
-  }, [keyword])
-
-  if (loading) {
-    return <i>Loading... 🌀🌀🌀</i>
-  }
-
+const ListOfGifs = ({ gifs }) => {
   return (
-    <>
+    <div className="ListOfGifs">
       {gifs.map(({ id, title, url }) => (
-        <Gift key={id} id={id} title={title} url={url} />
+        <Git key={id} id={id} title={title} url={url} />
       ))}
-    </>
+    </div>
   )
 }
 
